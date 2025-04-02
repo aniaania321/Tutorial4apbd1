@@ -83,11 +83,10 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        var result = emps.Any(e => e.Comm > 400);
+        var result = emps.Any(e => (e.Comm ?? 0) > 400);
         
         Assert.True(result);
     }
-
     // 18. Self-join to get employee-manager pairs
     // SQL: SELECT E1.EName AS Emp, E2.EName AS Manager FROM Emp E1 JOIN Emp E2 ON E1.Mgr = E2.EmpNo;
     [Fact]
